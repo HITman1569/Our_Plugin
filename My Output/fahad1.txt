@@ -1,0 +1,90 @@
+    public DoubleBuffer get(double[] dst, int offset, int length) {
+
+        if ((length << 3) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD) {
+            checkBounds(offset, length, dst.length);
+            int pos = position();
+            int lim = limit();
+            assert (pos <= lim);
+            int rem = (pos <= lim ? lim - pos : 0);
+            if (length > rem)
+                throw new BufferUnderflowException();
+
+            if (order() != ByteOrder.nativeOrder())
+                Bits.copyToLongArray(ix(pos), dst,
+                                          offset << 3,
+                                          length << 3);
+            else
+                Bits.copyToByteArray(ix(pos), dst,
+                                     offset << 3,
+                                     length << 3);
+            position(pos + length);
+        } else {
+            super.get(dst, offset, length);
+        }
+        return this;
+
+
+
+    }
+
+************THIS IS THE END OF THE METHOD*****************
+public DoubleBuffer get(double[] dst, int offset, int length) {
+
+        if ((length << 3) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD) {
+            checkBounds(offset, length, dst.length);
+            int pos = position();
+            int lim = limit();
+            assert (pos <= lim);
+            int rem = (pos <= lim ? lim - pos : 0);
+            if (length > rem)
+                throw new BufferUnderflowException();
+
+            if (order() != ByteOrder.nativeOrder())
+                Bits.copyToLongArray(i
+***********THIS IS THE END OF THIS SCC CLONE INSTANCE CODE**************
+public DoubleBuffer get(double[] dst, int offset, int length) {
+
+        if ((length << 3) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD) {
+            checkBounds(offset, length, dst.length);
+            int pos = position();
+            int lim = limit();
+            assert (pos <= lim);
+            int rem = (pos <= lim ? lim - pos : 0);
+            if (length > rem)
+                throw new BufferUnderflowException();
+
+            if (order() != ByteOrder.nativeOrder())
+                Bits.copyToLongArray(i
+***********THIS IS THE END OF THIS NEW SCC CLONE INSTANCE CODE**************
+AT INDEX : 0 :     
+AT INDEX : 1 : 37,public DoubleBuffer get(double[] dst, int offset, int length) {
+
+        if ((length << 3) > Bits.JNI_COPY_TO_ARRAY_THRESHOLD) {
+            checkBounds(offset, length, dst.length);
+            int pos = position();
+            int lim = limit();
+            assert (pos <= lim);
+            int rem = (pos <= lim ? lim - pos : 0);
+            if (length > rem)
+                throw new BufferUnderflowException();
+
+            if (order() != ByteOrder.nativeOrder())
+                Bits.copyToLongArray(i
+
+AT INDEX : 2 : x(pos), dst,
+                                          offset << 3,
+                                          length << 3);
+            else
+                Bits.copyToByteArray(ix(pos), dst,
+                                     offset << 3,
+                                     length << 3);
+            position(pos + length);
+        } else {
+            super.get(dst, offset, length);
+        }
+        return this;
+
+
+
+    }
+****************** THATS IT FOR THIS SPECIFIC METHOD CLONE INSTANCE*********************
