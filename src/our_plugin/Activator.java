@@ -18,11 +18,17 @@ public class Activator extends AbstractUIPlugin {
 
 	// The shared instance
 	private static Activator plugin;
+	private static Initializer init;
 
 	/**
 	 * The constructor
 	 */
 	public Activator() {
+		super();
+		if (plugin != null)
+			throw new IllegalStateException("Plug-in class already exists");
+		plugin = this;
+
 	}
 
 	/*
@@ -35,6 +41,7 @@ public class Activator extends AbstractUIPlugin {
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
+		init = new Initializer();
 	}
 
 	/*
@@ -45,6 +52,8 @@ public class Activator extends AbstractUIPlugin {
 	 * )
 	 */
 	public void stop(BundleContext context) throws Exception {
+		init.stop();
+		init = null;
 		plugin = null;
 		super.stop(context);
 	}
@@ -80,4 +89,10 @@ public class Activator extends AbstractUIPlugin {
 		}
 		return result;
 	}
+	
+	public static Initializer getInitializer()
+	{
+		return init;
+	}
+	
 }

@@ -1,0 +1,13 @@
+Simple Clone Class -- SCC
+Method Clone Class -- MCC
+File Clone Class -- FCC
+Simple Clone Structure -- SCS
+Method Clone Structure -- MCS
+File Clone Structure -- FCS
+Method ID -- MID
+File ID -- FID
+Directory ID -- DID
+Average Token Coverage -- ATC
+Percent Token Coverage -- PTC
+Token Coverage -- TC
+Percent Coverage -- PC

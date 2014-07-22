@@ -1,0 +1,111 @@
+4, float
+5, package
+6, final
+7, abstract
+8, strictfp
+9, byte
+10, public
+11, case
+12, short
+13, break
+14, while
+15, new
+16, instanceof
+17, implements
+18, synchronized
+19, return
+20, throw
+21, null
+22, threadsafe
+23, protected
+24, class
+25, throws
+26, do
+27, super
+28, transient
+29, native
+30, interface
+31, if
+32, double
+33, volatile
+34, catch
+35, try
+36, int
+37, for
+38, extends
+39, boolean
+40, char
+41, private
+42, default
+43, false
+44, this
+45, static
+46, continue
+47, finally
+48, else
+49, import
+50, void
+51, switch
+52, true
+53, long
+54, .
+55, LONG NUMBER
+56, FLOAT NUMBER
+57, DOUBLE NUMBER
+58, ?
+59, (
+60, )
+61, [
+62, ]
+63, {
+64, }
+65, :
+66, ,
+67, =
+68, ==
+69, !
+70, ~
+71, !=
+72, /
+73, /=
+74, +
+75, +=
+76, ++
+77, -
+78, -=
+79, --
+80, *
+81, *=
+82, %
+83, %=
+84, >>
+85, >>=
+86, >>>
+87, >>>=
+88, >=
+89, >
+90, <<
+91, <<=
+92, <=
+93, <
+94, ^
+95, ^=
+96, |
+97, |=
+98, ||
+99, &
+100, &=
+101, &&
+102, ;
+103, WHITE SPACE
+104, SINGLE-LINE COMMENT
+105, MULTI-LINE COMMENT
+106, CHARACTER LITERAL
+107, STRING LITERAL
+108, ESCAPE
+109, HEX DIGIT
+110, VOCABULARY
+111, IDENTIFIER
+112, INTEGER NUMBER
+113, EXPONENT
+114, FLOAT SUFFIX

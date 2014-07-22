@@ -10,11 +10,27 @@ public class Initializer {
 	private static int groupindex=0;
 	private static ExternalThread errStream;
 	private static ExternalThread outputStream;
+	private int groupChoice;
+	private int groupSize;
+	private int minScTok;
+	private boolean methodAnalyze;
+	private int minFcTokPtg;
+	private int minFcTok;
+	private int minMcTokPtg;
+	private int minMcTok;
 	
 	public Initializer()
 	{
-		ExecuteCloneMiner();
-		CloneDB.Initiate();
+		methodAnalyze = false;
+		groupChoice = 0;
+		groupSize = 0;
+		minScTok = 0;
+		minFcTokPtg = 0;
+		minFcTok = 0;
+		minMcTok = 0;
+		
+		//ExecuteCloneMiner();
+		//CloneDB.Initiate();
 	}
 	
 	public static void ExecuteCloneMiner()
@@ -74,10 +90,54 @@ public class Initializer {
 				outputStream.join();
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 			vcl.destroy();
 		}
 	}
+	
+	public boolean isMethodAnalyze() {
+		return methodAnalyze;
+	}
+
+	public int getMinScTok() {
+		return minScTok;
+	}
+
+	public int getMinFcTok() {
+		return minFcTok;
+	}
+
+	public int getMinFcTokPtg() {
+		return minFcTokPtg;
+	}
+
+	public int getMinMcTok() {
+		return minMcTok;
+	}
+
+	public int getMinMcTokPtg() {
+		return minMcTokPtg;
+	}
+	
+	/**
+	 * Set the value of CloneMiner Parameters
+	 */
+	public void setMinerSettings(int groupChoice, int groupSize, boolean methodAnalyze, int minScTok, int minFcTok, 
+			int minFcTokPtg, int minMcTok, int minMcTokPtg){
+		this.groupChoice = groupChoice;
+		this.groupSize = groupSize;
+		this.methodAnalyze = methodAnalyze;
+		this.minScTok = minScTok;
+		this.minFcTok = minFcTok;
+		this.minFcTokPtg = minFcTokPtg;
+		this.minMcTok = minMcTok;
+		this.minMcTokPtg = minMcTokPtg;
+	}
+	
+	public void stop()
+	{
+		// needed when finishing up //
+	}
+	
 }

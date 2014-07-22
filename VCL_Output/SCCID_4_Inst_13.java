@@ -1,6 +1,0 @@
-[] dst, int offset, int length) {
-        checkBounds(offset, length, dst.length);
-        if (length > remaining())
-            throw new BufferUnderflowException();
-        int end = offset + length;
-        for (int i = offset; i < end; i++)dst

@@ -23,6 +23,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Text;
 
+import our_plugin.Activator;
+import our_plugin.Directories;
+import our_plugin.Initializer;
+
 public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 	private Text tokenSelected;
 	private Button addTokenButton;
@@ -33,7 +37,7 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 	private String langTitle;
 	private Our_Wizard wizard;
 	private CloneDetectionSettingsWizardPage3 page3;
-	//private final Controller con = CloneAnalyzerPlugin.getController();
+	private final Initializer init = Activator.getInitializer();
 
 	public CloneDetectionSettingsWizardPage2(int langIndex, Our_Wizard wizard) {
 		super("Suppressed Tokens Settings");
@@ -42,27 +46,27 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 				"for Clone Detection (Example: \"3, 18\").");
 		this.langIndex = langIndex;
 		if(langIndex == 0){
-			//lang = Controller.TOKEN_JAVA;
+			lang = Directories.TOKEN_JAVA;
 			langTitle = "Java ";
 		}
 		else if(langIndex == 1){
-			//lang = Controller.TOKEN_CPP;
+			lang = Directories.TOKEN_CPP;
 			langTitle = "C++ ";
 		}
 		else if(langIndex == 3){
-			//lang = Controller.TOKEN_CSHARP;
+			lang = Directories.TOKEN_CSHARP;
 			langTitle = "CSHARP ";
 		}
 		else if(langIndex == 4){
-			//lang = Controller.TOKEN_RUBBY;
+			lang = Directories.TOKEN_RUBBY;
 			langTitle = "RUBY ";
 		}
 		else if(langIndex == 5){
-			//lang = Controller.TOKEN_PHP;
+			lang = Directories.TOKEN_PHP;
 			langTitle = "PHP ";
 		}
 		else if(langIndex == 6){
-			//lang = Controller.TOKEN_TXT;
+			lang = Directories.TOKEN_TXT;
 			langTitle = "TXT ";
 		}
 		else{
@@ -94,7 +98,7 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 		tokenSelected.setEditable(true);
 		tokenSelected.setText("");
 		try{
-			/*String filePath = con.getFilePath(Controller.CLONES_INPUT_SUPPRESSED);
+			String filePath = Directories.getFilePath(Directories.CLONES_INPUT_SUPPRESSED);
 			File file = new File(filePath);
 			FileInputStream filein = new FileInputStream(file);
 			BufferedReader stdin = new BufferedReader(new InputStreamReader(filein));
@@ -107,7 +111,8 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 			formData_1.top = new FormAttachment(0, 30);
 			formData_1.left = new FormAttachment(0, 10);
 			formData_1.right = new FormAttachment(100, -10);
-			tokenSelected.setLayoutData(formData_1);*/
+			tokenSelected.setLayoutData(formData_1);
+			stdin.close();
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 			e.printStackTrace();
@@ -136,20 +141,21 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 			}
 		});
 		try{
-			/*String filePath = con.getFilePath(lang);
+			String filePath = Directories.getFilePath(lang);
 			File file = new File(filePath);
 			FileInputStream filein = new FileInputStream(file);
 			BufferedReader stdin = new BufferedReader(new InputStreamReader(filein));
 			String line = "";
 			while((line = stdin.readLine()) != null){
 				tokenList.add(line);
-			}*/	
+			}
 			final FormData formData_2 = new FormData();
 			formData_2.bottom = new FormAttachment(0, 400);
 			formData_2.top = new FormAttachment(0, 210);
 			formData_2.left = new FormAttachment(0, 10);
 			formData_2.right = new FormAttachment(100, -70);
 			tokenList.setLayoutData(formData_2);
+			stdin.close();
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 			e.printStackTrace();
@@ -321,12 +327,10 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 		}
 		else if(langIndex == 5){
 				page3 = wizard.getPage36();
-			}
-		
+		}
 		else if(langIndex == 6){
 			page3 = wizard.getPage37();
-		}
-			
+		}	
 		else{
 			page3 = null;
 		}
@@ -340,7 +344,7 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 	
 	public void saveDataToWizard() {
 		try{
-			/*String filePath = con.getFilePath(Controller.CLONES_INPUT_SUPPRESSED);
+			String filePath = Directories.getFilePath(Directories.CLONES_INPUT_SUPPRESSED);
 			File file = new File(filePath);
 			file.createNewFile();
 			FileOutputStream fileout = new FileOutputStream(file);
@@ -350,7 +354,7 @@ public class CloneDetectionSettingsWizardPage2 extends WizardPage {
 			}
 			stdout.flush();
 			stdout.close();
-			fileout.close();*/
+			fileout.close();
 		}
 		catch(Exception ex){
 			System.err.println(ex.getMessage());

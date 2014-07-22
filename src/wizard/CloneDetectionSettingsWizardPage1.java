@@ -24,7 +24,13 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.IStatus;
 
+import our_plugin.Activator;
+import our_plugin.Directories;
+import our_plugin.Initializer;
+import our_plugin.handlers.SampleHandler;
+
 public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Listener{
+	public static final String CLONES_INPUT_FILES = "\\CloneMiner\\input\\InputFiles.txt";
 	private List selectionList;
 	private IStatus selectionListStatus;
 	private Combo languageChoice;
@@ -51,7 +57,8 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 	private Vector<String[]> fileGroups;
 	private Our_Wizard wizard;
 	private CloneDetectionSettingsWizardPage2 page2;
-	//private final Controller con = CloneAnalyzerPlugin.getController();
+	private final Initializer init = Activator.getInitializer();
+
 
 	public CloneDetectionSettingsWizardPage1(Our_Wizard wizard) {
 		super("Minimum Token and Input Files Settings");
@@ -120,7 +127,7 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 		simpleCloneClassLabel_2.setText("Min similarities for Method Clone Class");
 
 		mtc = new Text(container, SWT.BORDER);
-		mtc.setEnabled(false);//hammad
+		mtc.setEnabled(false);
 		mtc.setText("50");
 		final FormData formData_4 = new FormData();
 		formData_4.right = new FormAttachment(0, 270);
@@ -143,7 +150,7 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 		label.setText("tokens");
 
 		mpc = new Text(container, SWT.BORDER);
-		mpc.setEnabled(false);// hammad
+		mpc.setEnabled(false);
 		mpc.setText("50");
 		final FormData formData_4_1 = new FormData();
 		formData_4_1.top = new FormAttachment(label, -19, SWT.BOTTOM);
@@ -510,7 +517,6 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 			}
 			langIndex = languageChoice.getSelectionIndex();
 			
-			//hammad
 			/*if(languageChoice.getSelectionIndex() != 0){
 				methodAnalysisButton.setEnabled(false);
 			}
@@ -765,7 +771,7 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 		wizard.setGroupIndex(groupIndex);
 		int ftcInt = Integer.parseInt(ftc.getText().trim());
 		int fpcInt = Integer.parseInt(fpc.getText().trim());
-		boolean delim= true;//methodAnalysisButton.getSelection();
+		boolean delim= true;
 		wizard.setDelim(delim);
 		int mtcInt = 0;
 		int mpcInt = 0;
@@ -788,7 +794,7 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 		wizard.setFileList(fileGroups);
 		
 		try{
-			/*String pathStr = con.getFilePath(Controller.CLONES_INPUT_FILES);
+			String pathStr = Directories.getFilePath(Directories.CLONES_INPUT_FILES);
 			File file = new File(pathStr);
 			file.createNewFile();
 			FileOutputStream fileout = new FileOutputStream(file);
@@ -810,7 +816,7 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 			stdout.close();
 			fileout.close();
 
-			pathStr = con.getFilePath(Controller.CLONES_INPUT_CLUSTER_PTRS);
+			pathStr = Directories.getFilePath(Directories.CLONES_INPUT_CLUSTER_PTRS);
 			file = new File(pathStr);
 			file.createNewFile();
 			fileout = new FileOutputStream(file);
@@ -818,14 +824,14 @@ public class CloneDetectionSettingsWizardPage1 extends WizardPage implements Lis
 			stdout.print(fpcInt + "," + ftcInt + "," + mpcInt + "," + mtcInt);
 			stdout.flush();
 			stdout.close();
-			fileout.close();*/
+			fileout.close();
 		}catch(Exception e){
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
 		
-		//con.setMinerSettings(groupIndex, fileGroups.size(), delim, 
-		//		stcInt, fpcInt, ftcInt, mpcInt, mtcInt);	
+		//con.setMinerSettings(groupIndex, fileGroups.size(), delim, stcInt, fpcInt, ftcInt, mpcInt, mtcInt);	
+		init.setMinerSettings(groupIndex, fileGroups.size(), delim, stcInt, fpcInt, ftcInt, mpcInt, mtcInt);
 		wizard.setSavePage1(true);
 	}
 }

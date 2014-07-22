@@ -5,6 +5,7 @@ import java.util.Vector;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
+
 import java.io.File;
 import java.sql.Connection;
 import java.util.Vector;
@@ -19,9 +20,12 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.IWorkbenchPage;
 
+import our_plugin.Activator;
+import our_plugin.Initializer;
+
 
 public class Our_Wizard extends Wizard implements INewWizard {
-	//private final static Controller con = CloneAnalyzerPlugin.getController();
+	private final static Initializer init = Activator.getInitializer();
 	private Process miner;
 	private MyExternalThread errStream, outputStream;
 	private boolean isDelim = false; 
@@ -122,7 +126,6 @@ public class Our_Wizard extends Wizard implements INewWizard {
 		return page27;
 	}
 	
-
 	public CloneDetectionSettingsWizardPage3 getPage31() {
 		return page31;
 	}
